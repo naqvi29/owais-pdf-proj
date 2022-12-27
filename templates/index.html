@@ -1,0 +1,514 @@
+{% extends 'layout.html' %} 
+{% block title %}ZoomCare{% endblock %}
+{% block head %} 
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+.body2{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background:#fff;
+}
+.span2{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.span2 a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.span2 a:before,
+.span2 a:after{
+  position: absolute;
+  content: "View Prices";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.span2 a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.span2 a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.span2 a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+</style>
+{% endblock %}
+{% block content %}
+    <div class="body__overflow">
+      <div class="hero-image-homepage-2 emergency hide wf-section">
+        <div class="standard__padding-2-copy">
+          <div class="container-17 w-container">
+            <div class="div-block-68">
+              <h2 class="hero__image__description emergency">
+                <strong
+                  >Online scheduling is currently down, but don’t worry! We can
+                  still schedule visits at </strong
+                ><a target="_blank" href="tel:5036848252" class="mergency_phone"
+                  ><strong>503-684-8252</strong></a
+                ><strong>!</strong>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-homepage-2 wf-section">
+        <div class="standard__padding-2-copy">
+          <div class="w-container">
+            <div class="w-row">
+              <div class="column-3 w-col w-col-6">
+                <div class="div-block-62">
+                  <h1 class="heading-24">
+                    <strong class="bold-text-14">Healthcare on </strong
+                    ><span class="better__span-2"
+                      ><strong class="bold-text-14">your</strong></span
+                    ><strong class="bold-text-14"> schedule.</strong>
+                  </h1>
+                  <h2 class="hero__image__description">
+                    <strong
+                      >Urgent Care, Primary Care, and Specialty Care delivered
+                      when, where, and how you want it.</strong
+                    >
+                  </h2>
+                </div>
+              </div>
+              <div style="text-align:center; ">
+                
+                <!-- <span class="span2" style="margin-top: 6rem;"><a href="/pricing"></a></span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="covid-19-testing wf-section">
+        <div class="small-padding">
+          <div class="container-16 w-container">
+            <a href="/pricing" class="link__covid19">See Pricing</a>
+          </div>
+        </div>
+      </div>
+      <div class="beyond-better-choices wf-section">
+        <div class="standard__padding-2">
+          <div class="padding__mobile choices w-container">
+            <div class="div-block-57">
+              <div class="w-embed">
+                <h2 style="letter-spacing: -1px">
+                  Beyond
+                  <span style="position: relative; margin: 0 0 0 0"
+                    >Better<span class="tm_span__class">TM</span></span
+                  >
+                  <span class="choices__span">choices</span>
+                </h2>
+              </div>
+            </div>
+            <div class="columns-3 w-row">
+              <div
+                class="beyondbetter__choices__items virtual__options w-col w-col-4"
+              >
+                <h3 class="heading-30"><strong>Virtual options</strong></h3>
+                <p>
+                  In person, or in your PJs? See a ZoomCare provider in your
+                  neighborhood clinic or at home, on your couch.
+                </p>
+              </div>
+              <div
+                class="weekend__hours beyondbetter__choices__items w-col w-col-4"
+              >
+                <h3 class="heading-30">
+                  <strong>Weekend and evening hours</strong>
+                </h3>
+                <p>
+                  We’re here when you need us most—late at night, over the
+                  weekend, and on holidays, too.
+                </p>
+              </div>
+              <div
+                class="beyondbetter__choices__items urgent__care w-col w-col-4"
+              >
+                <h3 class="heading-30">Head-to-toe care</h3>
+                <p>
+                  We offer Urgent Care, Primary Care, and Virtual Care, plus
+                  Specialty Care and Emergency Care in select* markets.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="beyond-better-convenience wf-section">
+        <div class="standard__padding-2">
+          <div class="padding__mobile w-container">
+            <div class="div-block-57">
+              <div class="w-embed">
+                <h2 style="letter-spacing: -1px">
+                  Beyond
+                  <span style="position: relative; margin: 0 0 0 0"
+                    >Better<span class="tm_span__class">TM</span></span
+                  >
+                  <span class="convenience__span">convenience</span>
+                </h2>
+              </div>
+            </div>
+            <div class="columns-3 w-row">
+              <div class="beyondbetter__choices__items same__day w-col w-col-4">
+                <h3 class="heading-30"><strong>Same-day visits</strong></h3>
+                <p>
+                  Choose from hundreds of same-day visits that start on time.
+                </p>
+              </div>
+              <div
+                class="beyondbetter__choices__items labs__meds w-col w-col-4"
+              >
+                <h3 class="heading-30">
+                  <strong>Labs and meds made easy</strong>
+                </h3>
+                <p>
+                  Get your medications in-clinic or sent straight to your door.
+                  Need labs? We can perform them on site.
+                </p>
+              </div>
+              <div
+                class="beyondbetter__choices__items health__hands w-col w-col-4"
+              >
+                <h3 class="heading-30">
+                  <strong>Health in your hands</strong>
+                </h3>
+                <p>
+                  Access your charts, records, and test results easily from your
+                  phone.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="more-than-just-urgent-care wf-section">
+        <div class="standard__padding-2">
+          <div class="padding__mobile w-container">
+            <h2 class="everyday__specialty__care__title">
+              Everyday <span class="text-span-10">and</span> Specialty Care
+            </h2>
+            <div class="columns-6 w-row">
+              <div class="w-col w-col-4">
+                <ul role="list" class="services__listing">
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/illness-injury-clinic-visit.html"
+                      class="urgent__care__link"
+                      >Urgent Care</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/primary-care.html"
+                      class="urgent__care__link"
+                      >Primary Care</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/emergency-care.html"
+                      class="urgent__care__link"
+                      >Emergency Care (Super)</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/family-medicine.html"
+                      class="urgent__care__link"
+                      >Family Medicine</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="telehealth-services-online-doctors"
+                      class="urgent__care__link"
+                      >Virtual Care</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="w-col w-col-4">
+                <ul role="list" class="services__listing">
+                  <li class="list__item__custom__icon">
+                    <a href="mental-health.html" class="urgent__care__link"
+                      >Mental Health</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/womens-health.html"
+                      class="urgent__care__link"
+                      >Women&#x27;s Health</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a href="services/dermatology" class="urgent__care__link"
+                      >Dermatology</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/orthopedics.html"
+                      class="urgent__care__link"
+                      >Orthopedics</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a href="services/podiatry.html" class="urgent__care__link"
+                      >Podiatry</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="w-col w-col-4">
+                <ul role="list" class="services__listing">
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/physical-therapy.html"
+                      class="urgent__care__link"
+                      >Physical Therapy</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/sports-physical.html"
+                      class="urgent__care__link"
+                      >Sports Physicals</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a
+                      href="services/chiropractic.html"
+                      class="urgent__care__link"
+                      >Chiropractic</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a href="services/imaging.html" class="urgent__care__link"
+                      >X-Ray &amp; Imaging</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a href="covid-testing.html" class="urgent__care__link"
+                      >COVID-19 Testing</a
+                    >
+                  </li>
+                  <li class="list__item__custom__icon">
+                    <a href="flu" class="urgent__care__link">Flu Shots</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="beyond-better-care">
+              <div class="div-block-57">
+                <div class="w-embed">
+                  <h2 style="letter-spacing: -1px">
+                    Ready to experience Beyond
+                    <span style="position: relative; margin: 0 12px 0 0"
+                      >Better<span class="tm_span__class">TM</span></span
+                    >
+                    care?
+                  </h2>
+                </div>
+              </div>
+              <a
+                id="scheduleAVisitButton"
+                href="schedule.html"
+                class="button-2-copy w-button"
+                >Schedule a Visit</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="insurance-and-pricing wf-section">
+        <div class="standard__padding-2">
+          <div class="padding__mobile w-container">
+            <div class="columns-5 w-row">
+              <div class="column-5 w-col w-col-6">
+                <h2 class="insurance__pricing__title">
+                  <strong class="bold-text-17">Insurance and pricing</strong>
+                </h2>
+                <ul role="list" class="list-9 w-list-unstyled">
+                  <li class="checklist__item">
+                    <strong>No memberships or hidden fees</strong>
+                  </li>
+                  <li class="checklist__item">
+                    <strong>Transparent self-pay prices</strong>
+                  </li>
+                  <li class="checklist__item">
+                    <strong>Most major insurance plans accepted</strong>
+                  </li>
+                </ul>
+                <a href="insurers.html" class="learn__about__link">
+                  <strong>Learn more about insurances we accept </strong
+                  ><span class="text-span-12"><strong>Go!</strong></span>
+                </a>
+              </div>
+              <div class="column-7 w-col w-col-6">
+                <div class="div-block-57">
+                  <img
+                    src="https://assets-global.website-files.com/5edaa80e81168beb57896d2f/62aa76690cf84071da699dbd_icon__quality__care.svg"
+                    loading="lazy"
+                    width="230"
+                    alt="Quality Care On-Demand since 2006 "
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clinics wf-section">
+        <div class="standard__padding-2 located__clinics__container">
+          <div class="padding__mobile w-container">
+            <h2 class="everyday__specialty__care__title">
+              <span class="text-span-10"><strong>60+</strong></span
+              ><strong>
+                conveniently located clinics,<br />complete with on-site labs </strong
+              ><strong>and meds</strong>
+            </h2>
+            <div class="columns-4 w-row">
+              <div class="w-col w-col-7">
+                <div class="div-block-58">
+                  <img
+                    src="https://assets-global.website-files.com/5edaa80e81168beb57896d2f/62aa76690cf8402af6699dc1_map__zoomcare.svg"
+                    loading="lazy"
+                    alt="60+ conveniently located clinics, complete with on-site labs and meds"
+                    class="image-20"
+                  />
+                </div>
+              </div>
+              <div class="column-7 w-col w-col-5">
+                <h3 class="clinic__locations__title">Clinic locations</h3>
+                <ul
+                  id="clinicLocations"
+                  role="list"
+                  class="list-8 w-list-unstyled"
+                >
+                  <li class="clinic__location__item">
+                    <a href="seattle-area.html" class="clinic__link">Seattle</a>
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="eugene-area.html" class="clinic__link">Eugene</a>
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="vancouver.html" class="clinic__link">Vancouver</a>
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="boise.html" class="clinic__link">Boise</a>
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="portland-area.html" class="clinic__link"
+                      >Portland</a
+                    >
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="denver-boulder.html" class="clinic__link"
+                      >Denver</a
+                    >
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="salem.html" class="clinic__link">Salem</a>
+                  </li>
+                  <li class="clinic__location__item">
+                    <a href="denver-boulder.html" class="clinic__link"
+                      >Boulder</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comments wf-section">
+        <div class="standard__padding-2">
+          <div class="padding__mobile-copy w-container">
+            <h2 class="everyday__specialty__care__title">
+              <strong>We’d brag about ourselves, but </strong
+              ><span class="you__span"><strong>you</strong></span
+              ><strong><br />do it so much better.</strong>
+            </h2>
+            <div class="splide slider1 padding__slider">
+              <div class="splide__track w-dyn-list">
+                <div role="list" class="splide__list w-dyn-items">
+                  <div role="listitem" class="splide__slide quote w-dyn-item">
+                    <h2 class="heading-33">Michael</h2>
+                    <p>
+                      Fast and helpful. Happy to recommend to anyone with-out a
+                      primary care physician.
+                    </p>
+                  </div>
+                  <div role="listitem" class="splide__slide quote w-dyn-item">
+                    <h2 class="heading-33">Natasha</h2>
+                    <p>
+                      Very organized, quick, and hassle-free service. It&#x27;s
+                      like a breath of fresh air.
+                    </p>
+                  </div>
+                  <div role="listitem" class="splide__slide quote w-dyn-item">
+                    <h2 class="heading-33">Jahedin</h2>
+                    <p>
+                      Super quick, friendly staff and got me in ahead of
+                      schedule.
+                    </p>
+                  </div>
+                  <div role="listitem" class="splide__slide quote w-dyn-item">
+                    <h2 class="heading-33">Jesika</h2>
+                    <p>
+                      Very professional. Got me in quickly when my primary care
+                      couldn&#x27;t.
+                    </p>
+                  </div>
+                  <div role="listitem" class="splide__slide quote w-dyn-item">
+                    <h2 class="heading-33">Eve</h2>
+                    <p>Best urgent care I&#x27;ve been to in 20 years.</p>
+                  </div>
+                  <div role="listitem" class="splide__slide quote w-dyn-item">
+                    <h2 class="heading-33">Robin</h2>
+                    <p>
+                      Great care. Provider was kind, thorough, and fast. Very
+                      convenient service.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="splide__arrows is--mobile-center">
+                <div class="splide__embed w-embed">
+                  <button class="splide__arrow splide__arrow--prev"></button>
+                </div>
+                <div class="splide__embed w-embed">
+                  <button class="splide__arrow splide__arrow--next"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

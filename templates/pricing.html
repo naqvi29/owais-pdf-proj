@@ -1,0 +1,240 @@
+{% extends 'layout.html' %} 
+{% block title %}ZoomCare{% endblock %}
+{% block head %} 
+<style>
+  @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
+.snip1404 {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  color: #ffffff;
+  text-align: left;
+  font-size: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px 10px;
+}
+.snip1404 img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+}
+.snip1404 .plan {
+  margin: 0;
+  width: 25%;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  border: 3px solid #007f9f;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: #1ebee7;
+}
+.snip1404 .plan:hover i,
+.snip1404 .plan.hover i {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.snip1404 .plan:first-of-type {
+  border-radius: 8px 0 0 8px;
+}
+.snip1404 .plan:last-of-type {
+  border-radius: 0 8px 8px 0;
+}
+.snip1404 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+.snip1404 header {
+  background-color: #1ebee7;
+  color: #ffffff;
+}
+.snip1404 .plan-title {
+  background-color: black;
+  position: relative;
+  margin: 0;
+  padding: 20px 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: white;
+}
+.snip1404 .plan-title:after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 300px 0 0;
+  border-color: black transparent transparent;
+}
+.snip1404 .plan-cost {
+  padding: 40px 20px 10px;
+  text-align: right;
+}
+.snip1404 .plan-price {
+  font-weight: 600;
+  font-size: 3em;
+}
+.snip1404 .plan-type {
+  opacity: 0.8;
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+.snip1404 .plan-features {
+  padding: 0 0 20px;
+  margin: 0;
+  list-style: outside none none;
+}
+.snip1404 .plan-features li {
+  padding: 8px 5%;
+}
+.snip1404 .plan-features i {
+  margin-right: 8px;
+  color: black;
+}
+.snip1404 .plan-select {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+.snip1404 .plan-select a {
+  background-color: black;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 0.75em;
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: inline-block;
+}
+.snip1404 .plan-select a:hover {
+  background-color: #006882;
+}
+.snip1404 .plan:hover {
+  margin-top: -10px;
+  border-color: #331926;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  border-radius: 8px;cursor:pointer;
+}
+.snip1404 .plan .plan-select {
+  padding: 30px 20px;
+}
+@media only screen and (max-width: 767px) {
+  .snip1404 .plan {
+    width: 50%;
+  }
+  .snip1404 .plan-title,
+  .snip1404 .plan-select a {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .snip1404 .plan-select,
+  .snip1404 .featured .plan-select {
+    padding: 20px;
+  }
+  .snip1404 .featured {
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .snip1404 .plan {
+    width: 100%;
+  }
+}
+
+</style>
+{% endblock %}
+{% block content %}
+<div class="body__overflow">
+  <div class="">
+    <div class="standard__padding-2">
+      <div class="padding__mobile choices w-container">
+        <div class="columns-3 w-row">
+          <div class="snip1404" >
+            <div class="plan">
+              <header>
+                <h4 class="plan-title">
+                  Starter
+                </h4>
+                <div class="plan-cost"><span class="plan-price">$19</span><span class="plan-type">/month</span></div>
+              </header>
+              <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i>5GB Linux Web Space</li>
+                <li><i class="ion-checkmark"> </i>5 MySQL Databases</li>
+                <li><i class="ion-checkmark"> </i>Unlimited Email</li>
+                <li><i class="ion-checkmark"> </i>250Gb mo Transfer</li>
+                <li><i class="ion-checkmark"> </i>24/7 Tech Support</li>
+                <li><i class="ion-checkmark"> </i>Daily Backups</li>
+              </ul>
+              <div class="plan-select"><a href="/select-plan/1">Select Plan</a></div>
+            </div>
+            <div class="plan">
+              <header>
+                <h4 class="plan-title">
+                  
+                  Basic
+                </h4>
+                <div class="plan-cost"><span class="plan-price">$29</span><span class="plan-type">/month</span></div>
+              </header>
+              <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i>10GB Linux Web Space</li>
+                <li><i class="ion-checkmark"> </i>10 MySQL Databases</li>
+                <li><i class="ion-checkmark"> </i>Unlimited Email</li>
+                <li><i class="ion-checkmark"> </i>500Gb mo Transfer</li>
+                <li><i class="ion-checkmark"> </i>24/7 Tech Support</li>
+                <li><i class="ion-checkmark"> </i>Daily Backups</li>
+              </ul>
+              <div class="plan-select"><a href="/select-plan/2">Select Plan</a></div>
+            </div>
+            <div class="plan featured">
+              <header>
+                <h4 class="plan-title">
+                  
+                  Professional
+                </h4>
+                <div class="plan-cost"><span class="plan-price">$49</span><span class="plan-type">/month</span></div>
+              </header>
+              <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i>25GB Linux Web Space</li>
+                <li><i class="ion-checkmark"> </i>25 MySQL Databases</li>
+                <li><i class="ion-checkmark"> </i>Unlimited Email</li>
+                <li><i class="ion-checkmark"> </i>2000Gb mo Transfer</li>
+                <li><i class="ion-checkmark"> </i>24/7 Tech Support</li>
+                <li><i class="ion-checkmark"> </i>Daily Backups</li>
+              </ul>
+              <div class="plan-select"><a href="/select-plan/3">Select Plan</a></div>
+            </div>
+            <div class="plan">
+              <header>
+                <h4 class="plan-title">
+                  
+                  Ultra
+                </h4>
+                <div class="plan-cost"><span class="plan-price">$99</span><span class="plan-type">/month</span></div>
+              </header>
+              <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i>100GB Linux Web Space</li>
+                <li><i class="ion-checkmark"> </i>Unlimited MySQL Databases</li>
+                <li><i class="ion-checkmark"> </i>Unlimited Email</li>
+                <li><i class="ion-checkmark"> </i>10000Gb mo Transfer</li>
+                <li><i class="ion-checkmark"> </i>24/7 Tech Support</li>
+                <li><i class="ion-checkmark"> </i>Daily Backups</li>
+              </ul>
+              <div class="plan-select"><a href="/select-plan/4">Select Plan</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

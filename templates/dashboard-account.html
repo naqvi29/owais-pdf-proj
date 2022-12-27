@@ -1,0 +1,60 @@
+{% extends 'dashboard-layout.html' %} 
+{% block title %} My Account {% endblock %}
+{% block head %}{% endblock %}
+{% block heading %}My Account{% endblock %}
+{% block heading2 %}My Account{% endblock %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div id="card" class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/static/profile-pics/{{user.pic}}" alt="Card image cap">
+          </div>
+        <form action="/account" method="post" enctype=multipart/form-data>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input disabled type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" value="{{user.name}}" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input disabled type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{user.email}}" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input disabled name="password" type="password" class="form-control" id="password" placeholder="Password" value="{{user.password}}" required>
+          </div>
+          <div style="display:none;" id="pp" class="form-group">
+            <label for="form2Example22">Profile Picture</label>
+            <input type="file" name="pic" id="form2Example22" class="form-control"  />
+          </div>
+
+          <button id="updateAccount" type="button" onclick="return update_account()" class="btn btn-secondary">Update Account</button>
+          <button id="save-btn" onclick="return confirm('Are you sure you want to update your account?');" style="display: none;" type="submit" class="btn btn-dark">Save Changes</button>
+        </form>
+      </div>
+    </section>
+    <!-- /.content -->
+  {% endblock %}
+  {% block scripts %}
+  <script>
+    function update_account(){
+      var card = document.getElementById("card");
+      card.style.display = "none";
+      document.getElementById('email').disabled = false;
+      document.getElementById('name').disabled = false;
+      document.getElementById('password').disabled = false;
+      document.getElementById('password').type = 'text';
+
+      
+      var pp = document.getElementById("pp");
+      pp.style.display = "block";
+
+      var update_account = document.getElementById("updateAccount");
+      update_account.style.display = "none";
+      var save_btn = document.getElementById("save-btn");
+      save_btn.style.display = "block";
+    }
+
+  </script>
+  {% endblock %}
