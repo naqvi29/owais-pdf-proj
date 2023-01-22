@@ -1,0 +1,359 @@
+{% extends 'dashboard-layout.html' %}
+{% block title %} Contract #{{form.id}} {{form.name}} {% endblock %}
+{% block head %}
+<style>
+    /* Style the buttons that toggles the form categories */
+    .collapsible {
+      background-color: #007fd0;
+      color: white;
+      cursor: pointer;
+      /* padding: 18px; */
+      padding: 8px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      /* font-size: 15px; */
+      font-size: 12px;
+      margin: 1rem 0rem;
+      border-radius: 10px;
+    }
+
+    /* Style the form fields when the buttons are clicked */
+    .content2 {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+      margin: 1rem 2rem;
+    }
+  </style>
+ <style>
+  /* Style the button */
+  .animated-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  /* Add a hover animation to the button */
+  .animated-button:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+</style>
+{% endblock %}
+{% block heading %}Contract #{{form.id}} {{form.name}}{% endblock %}
+{% block heading2 %}Contract #{{form.id}} {{form.name}}{% endblock %}
+{% block content %}
+
+<!-- Main content -->
+<section class="content">
+  <div class="container">
+    {% if entry %}
+    <form action="/save-form/{{form.id}}" method="post">
+
+      <button type="button" class="collapsible">PERSONAL INFORMATION</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME</label>
+          <input type="text" name="NAME" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required value="{{entry.data['NAME']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COUNTRY</label>
+          <input type="text" name="COUNTRY" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required value="{{entry.data['COUNTRY']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">PASSPORT NO</label>
+          <input type="text" name="PASSPORT_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['PASSPORT_NO']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">RESIDENT EMIRATES ID NO.</label>
+          <input type="text" name="RESIDENT_EMIRATES_ID_NO" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required value="{{entry.data['RESIDENT_EMIRATES_ID_NO']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TRAFFIC PLATE NO.</label>
+          <input type="text" name="TRAFFIC_PLATE_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['TRAFFIC_PLATE_NO']}}">
+        </div>
+      </div>
+      <button type="button" class="collapsible">AUTHORIZER INFORMATION</button>
+      <div class="content2">
+        
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER NAME</label>
+          <input type="text"
+            name="AUTHORIZER_NAME"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['AUTHORIZER_NAME']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER COUNTRY</label>
+          <input type="text"
+            name="AUTHORIZER_COUNTRY"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['AUTHORIZER_COUNTRY']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER PASSPORT NO.</label>
+          <input type="text" name="AUTHORIZER_PASSPORT_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['AUTHORIZER_PASSPORT_NO']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER RESIDENT EMIRATES ID NO.</label>
+          <input type="text" name="AUTHORIZER_RESIDENT_EMIRATES_ID_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['AUTHORIZER_RESIDENT_EMIRATES_ID_NO']}}"> 
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">VEHICLE INFORMATION</button>
+      <div class="content2">
+        
+        <div class="form-group">
+          <label for="exampleInputEmail1">TRAFFIC PLATE NO.</label>
+          <input type="text" name="TRAFFIC_PLATE_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['TRAFFIC_PLATE_NO']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">VEHICLE TYPE</label>
+          <input type="text" name="VEHICLE_TYPE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['VEHICLE_TYPE']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">VEHICLE COLOR</label>
+          <input type="text" name="VEHICLE_COLOR"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['VEHICLE_COLOR']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">VEHICLE YEAR</label>
+          <input type="text" name="VEHICLE_YEAR"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['VEHICLE_YEAR']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ENGINE NO.</label>
+          <input type="text" name="ENGINE_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['ENGINE_NO']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">CHASSIS NO</label>
+          <input type="text" name="CHASSIS_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required value="{{entry.data['CHASSIS_NO']}}">
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">SIGNATURES</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">OWNER NAME</label>
+          <input type="text" name="OWNER_NAME"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required  value="{{entry.data['OWNER_NAME']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">OWNER SIGN</label>
+          <input type="text" name="OWNER_SIGN"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required  value="{{entry.data['OWNER_SIGN']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ATTORNEY NAME</label>
+          <input type="text" name="ATTORNEY_NAME"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required  value="{{entry.data['ATTORNEY_NAME']}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ATTORNEY SIGN</label>
+          <input type="text" name="ATTORNEY_SIGN"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required  value="{{entry.data['ATTORNEY_SIGN']}}">
+        </div>
+      </div>
+      <!-- <button class="animated-button" type="submit">Save</button> -->
+      <div class="text-center">
+      <button class="btn btn btn-success" type="submit">Save</button>
+      </div>
+    </form>
+    {% else %}
+    <form action="/save-form/{{form.id}}" method="post">
+      <button type="button" class="collapsible">PERSONAL INFORMATION</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME</label>
+          <input type="text" name="NAME" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COUNTRY</label>
+          <input type="text" name="COUNTRY" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">PASSPORT NO</label>
+          <input type="text" name="PASSPORT_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">RESIDENT EMIRATES ID NO.</label>
+          <input type="text" name="RESIDENT_EMIRATES_ID_NO" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TRAFFIC PLATE NO.</label>
+          <input type="text" name="TRAFFIC_PLATE_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+      <button type="button" class="collapsible">AUTHORIZER INFORMATIOn</button>
+      <div class="content2">
+        
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER NAME</label>
+          <input type="text"
+            name="AUTHORIZER_NAME"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER COUNTRY</label>
+          <input type="text"
+            name="AUTHORIZER_COUNTRY"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER PASSPORT NO.</label>
+          <input type="text" name="AUTHORIZER_PASSPORT_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORIZER RESIDENT EMIRATES ID NO.</label>
+          <input type="text" name="AUTHORIZER_RESIDENT_EMIRATES_ID_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">VEHICLE INFORMATION</button>
+      <div class="content2">
+        
+        <div class="form-group">
+          <label for="exampleInputEmail1">TRAFFIC PLATE NO.</label>
+          <input type="text" name="TRAFFIC_PLATE_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">VEHICLE TYPE</label>
+          <input type="text" name="VEHICLE_TYPE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">VEHICLE COLOR</label>
+          <input type="text" name="VEHICLE_COLOR"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">VEHICLE YEAR</label>
+          <input type="text" name="VEHICLE_YEAR"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ENGINE NO.</label>
+          <input type="text" name="ENGINE_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">CHASSIS NO</label>
+          <input type="text" name="CHASSIS_NO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">SIGNATURES</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">OWNER NAME</label>
+          <input type="text" name="OWNER_NAME"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">OWNER SIGN</label>
+          <input type="text" name="OWNER_SIGN"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ATTORNEY NAME</label>
+          <input type="text" name="ATTORNEY_NAME"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ATTORNEY SIGN</label>
+          <input type="text" name="ATTORNEY_SIGN"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+      <!-- <button class="animated-button" type="submit">Save</button> -->
+      <div class="text-center">
+        <button class="btn btn btn-success" type="submit">Save</button>
+        </div>
+    </form>
+    {% endif %}
+
+  </div>
+</section>
+<!-- /.content -->
+{% endblock %}
+{% block scripts %}
+<script>
+    // JavaScript to toggle the form categories
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+  
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+{% endblock %}

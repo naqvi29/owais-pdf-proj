@@ -1,0 +1,8 @@
+request_url :137.184.226.162/api/v1/send_file
+request method: Post
+request_payload : 
+
+file : attached file
+show_contacts : 1 to show and 2 to hide contacts
+
+output : will be a PDF file

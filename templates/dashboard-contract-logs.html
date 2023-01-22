@@ -1,0 +1,43 @@
+{% extends 'dashboard-layout.html' %} 
+{% block title %} Contract Logs {% endblock %}
+{% block head %}{% endblock %}
+{% block heading %}Contract Logs{% endblock %}
+{% block heading2 %}Contract Logs{% endblock %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <table id="example" class="table table-striped table-bordered" style="width:100%" >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Userid</th>
+              <th scope="col">Log</th>
+              <th scope="col">Action</th>
+              <th scope="col">Datetime</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in logs %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{i.userid}}</td>
+              <td>{{i.description}}</td>
+              {% if i.file=="True" %}
+              <td><a href="/download-contract-log-file/{{i.id}}"><button class="btn btn-sm btn-dark">Download</button></a></td>
+              {% else %} 
+              <td></td>
+              {% endif %}
+              <td>{{i.date_time}}</td>
+              <td><a href="/delete-log/contract/{{i.id}}"><button class="btn btn-sm btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- /.content -->
+  {% endblock %}
+  {% block scripts %}  {% endblock %}

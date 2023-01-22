@@ -1,0 +1,47 @@
+{% extends 'dashboard-layout.html' %} 
+{% block title %} Users {% endblock %}
+{% block head %}{% endblock %}
+{% block heading %}Users{% endblock %}
+{% block heading2 %}Users{% endblock %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+              <th scope="col">Display Picture</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in users %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{i.name}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.password}}</td>
+              <td>
+                <a href="/static/profile-pics/{{i.pic}}"><img src="/static/profile-pics/{{i.pic}}" alt="image" width="30" height="30"></a>
+              </td>
+              <td>{{i.status}}</td>
+              {% if i.status == 'active' %}
+              <td><a onclick="return confirm('Are you sure you want to disable this account?');" href="/account-status/inactive/{{i.id}}"><button class="btn btn-sm btn-danger">Disable Account</button></a></td>
+              {% else %}
+              <td><a onclick="return confirm('Are you sure you want to active this account?');" href="/account-status/active/{{i.id}}"><button class="btn btn-sm btn-success">Activate Account</button></a></td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- /.content -->
+  {% endblock %}
+  {% block scripts %}  {% endblock %}

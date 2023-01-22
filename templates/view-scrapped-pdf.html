@@ -1,0 +1,66 @@
+{% extends 'dashboard-layout.html' %} 
+{% block title %} all Scrapped PDF {% endblock %}
+{% block head %}
+<style>
+ 
+.cell {
+  max-width: 200px; /*set the max width of the cell*/
+  overflow: hidden; /*hide the overflow content*/
+  text-overflow: ellipsis; /*add ellipsis to the hidden text*/
+  }
+</style>
+{% endblock %}
+{% block heading %}all Scrapped PDF{% endblock %}
+{% block heading2 %}all Scrapped PDF{% endblock %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="container">
+        
+          <h3 class="mt-5">Processed Files</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered" style="width:100%"  id="user-table" >
+              <thead>
+                <tr>
+                  <th>FileID</th>
+                  <th style="max-width: 200px!important;">Input Filename</th>
+                  <th>Output Filename</th>
+                  <!-- <th>Size</th> -->
+                  <th>Date</th>
+                  <th>Download</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="file-list">
+                {% for i in data %}
+                <tr>
+                  <td>{{i.id}}</td>
+                  <td class="cell">{{i.input}}</td>
+                  <td class="cell">{{i.output}}</td>
+                  <!-- <td>{{i.size}} Kb</td> -->
+                  <td>{{i.date}}</td>
+                  <td><a href="/download-processed-file/{{i.id}}"><button class="btn-sm btn btn-outline-success">Download</button></a></td>
+                  <td><a href="/remove-processed-file/{{i.id}}"><button class="btn-sm btn btn-outline-danger">Delete</button></a></td>
+              </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- /.content -->
+  {% endblock %}
+  {% block scripts %}
+  
+  
+<script>
+  $(document).ready(function () {
+  $('#user-table').DataTable();
+});
+</script>
+{% endblock %}

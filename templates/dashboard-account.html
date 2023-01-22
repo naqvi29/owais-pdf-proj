@@ -13,7 +13,7 @@
           </div>
         <form action="/account" method="post" enctype=multipart/form-data>
           <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
+            <label for="exampleInputEmail1">Name </label>
             <input disabled type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" value="{{user.name}}" required>
           </div>
           <div class="form-group">
@@ -28,6 +28,53 @@
             <label for="form2Example22">Profile Picture</label>
             <input type="file" name="pic" id="form2Example22" class="form-control"  />
           </div>
+
+          {% if admin %} 
+          <div   id="pp" class="form-group">
+            <label for="form2Example22">Auto Delete Data</label>
+            <select disabled id="auto_del"  name="auto_del"  class="form-control">
+              {% if user.auto_del =='10 days' %}
+              <option selected value="10 days">10 Days</option>
+              <option value="15 days">15 Days</option>
+              <option value="30 days">30 Days</option>
+              <option value="2 months">2 Months</option>
+              <option value="3 months">3 Months</option>
+              {% elif user.auto_del == '15 days' %}
+              <option value="10 days">10 Days</option>
+              <option selected value="15 days">15 Days</option>
+              <option value="30 days">30 Days</option>
+              <option value="2 months">2 Months</option>
+              <option value="3 months">3 Months</option>
+              {% elif user.auto_del == '30 days' %}
+              <option value="10 days">10 Days</option>
+              <option value="15 days">15 Days</option>
+              <option selected value="30 days">30 Days</option>
+              <option value="2 months">2 Months</option>
+              <option value="3 months">3 Months</option>
+              {% elif user.auto_del == '2 months' %}
+              <option value="10 days">10 Days</option>
+              <option value="15 days">15 Days</option>
+              <option value="30 days">30 Days</option>
+              <option selected value="2 months">2 Months</option>
+              <option value="3 months">3 Months</option>
+              {% elif user.auto_del == '3 months' %}
+              <option value="10 days">10 Days</option>
+              <option value="15 days">15 Days</option>
+              <option value="30 days">30 Days</option>
+              <option value="2 months">2 Months</option>
+              <option selected value="3 months">3 Months</option>
+              {% else %}
+              <option value="10 days">10 Days</option>
+              <option value="15 days">15 Days</option>
+              <option selected value="30 days">30 Days</option>
+              <option value="2 months">2 Months</option>
+              <option value="3 months">3 Months</option>
+              
+            {% endif %}
+            </select>
+          </div>
+          {% endif %}
+
 
           <button id="updateAccount" type="button" onclick="return update_account()" class="btn btn-secondary">Update Account</button>
           <button id="save-btn" onclick="return confirm('Are you sure you want to update your account?');" style="display: none;" type="submit" class="btn btn-dark">Save Changes</button>
@@ -45,6 +92,10 @@
       document.getElementById('name').disabled = false;
       document.getElementById('password').disabled = false;
       document.getElementById('password').type = 'text';
+      {% if admin %}
+      document.getElementById('auto_del').disabled = false;
+      {% endif %}
+
 
       
       var pp = document.getElementById("pp");

@@ -1,0 +1,47 @@
+{% extends 'dashboard-layout.html' %} 
+{% block title %} Filled Contracts {% endblock %}
+{% block head %}{% endblock %}
+{% block heading %}Filled Contracts{% endblock %}
+{% block heading2 %}Filled Contracts{% endblock %}
+{% block content %}
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="container-fluid">
+      
+      <div class="row mt-4">
+        <div class="col-md-12">
+        <div class="card-deck">
+          {% for i in forms %}
+          <div class="col-md-3">
+            <div class="card">
+              {% if i.form_id == 1 %}
+              <img src="/static/img/sebastian-herrmann-NbtIDoFKGO8-unsplash.jpg"  style="height: 13rem;" class="card-img-top" alt="Card image cap">
+              {% elif i.form_id == 2 %}
+              <img src="/static/img/chris-liverani-HUJDz6CJEaM-unsplash.jpg"  style="height: 13rem;" class="card-img-top" alt="Card image cap">
+
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{i.form_name}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="/select-form/{{i.form_id}}" class="btn btn-sm btn-dark">Select</a>
+                {% if i.status == "completed" %}
+                <button  style="pointer-events: none;"class="btn btn-sm btn-success">Completed</button>
+                
+                <a href="/download-filled-pdf/{{i.form_id}}" class="btn btn-sm btn-primary">Download</a>
+                {% else %}
+                <button style="pointer-events: none;" class="btn btn-sm btn-secondary">Pending</button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <!-- /.content -->
+  {% endblock %}
+  {% block scripts %}  {% endblock %}

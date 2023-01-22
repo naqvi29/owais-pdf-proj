@@ -4,6 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto+Condensed:wght@300&family=Roboto+Flex:opsz@8..144&display=swap" rel="stylesheet">
+  <style>
+    body{
+      font-family: 'Oswald', sans-serif!important;
+font-family: 'Roboto Condensed', sans-serif!important;
+font-family: 'Roboto Flex', sans-serif!important;
+    }
+  </style>
+  <style>
+    img.round-image {
+      border-radius: 50%; /* make the corners rounded */
+      width: 200px; /* set the width of the image */
+      height: 200px; /* set the height of the image */
+    }
+  </style>
 
   <style>
     body{
@@ -74,7 +93,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <!-- <img src="/static/dashboard/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
-          <img src="/static/profile-pics/{{user.pic}}" class="img-circle elevation-2" alt="User Image">
+          <img src="/static/profile-pics/{{user.pic}}" class="round-image" style="width: 2rem;height: 2rem;" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{user.name}}</a>
@@ -86,106 +105,100 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
+          {% if user.type == 'admin' %}
+          <li class="nav-item">
+            <a href="/users" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Users</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pdf-logs" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>PDF Logs</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/contract-logs" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Contract Logs</p>
+            </a>
+          </li>
           <!-- <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Contract History</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Pdf History</p>
+            </a>
+          </li> -->
+          <li class="nav-item">
+            <a href="/account" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Admin Account</p>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                xx 
+                Contracts
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="/fill-contracts" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Fill Contracts</p>
                 </a>
               </li>
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="/view-filled-contracts" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>uPlot</p>
+                  <p>View Filled Contracts</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                UI Elements
-                <i class="fas fa-angle-left right"></i>
+                Scrap PDF
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="/scrap-pdf" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+                  <p>Scrap PDF files</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="/view-scrapped-pdf" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/ribbons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
+                  <p>View Scrapped Files</p>
                 </a>
               </li>
             </ul>
-          </li> -->
+          </li>
+          
           <li class="nav-item">
             <a href="/account" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>My Account</p>
             </a>
           </li>
+          {% endif %}
           <li class="nav-item">
             <a href="/logout" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
@@ -206,7 +219,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{% block heading %} {% endblock %}</h1>
+            <h1 class="m-0" style="text-decoration:overline;">{% block heading %} {% endblock %}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -242,9 +255,11 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/static/dashboard/plugins/jquery/jquery.min.js"></script>
+<!-- <script src="/static/dashboard/plugins/jquery/jquery.min.js"></script> -->
+
+
 <!-- jQuery UI 1.11.4 -->
-<script src="/static/dashboard/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- <script src="/static/dashboard/plugins/jquery-ui/jquery-ui.min.js"></script> -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
@@ -275,6 +290,21 @@
 <!-- <script src="/static/dashboard/dist/js/demo.js"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/static/dashboard/dist/js/pages/dashboard.js"></script>
+
+
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+
+<script>
+  $(document).ready(function () {
+  $('#example').DataTable();
+});
+</script>
+
 {% block scripts %} {% endblock %}
+
 </body>
 </html>

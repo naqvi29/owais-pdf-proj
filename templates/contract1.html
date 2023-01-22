@@ -1,0 +1,413 @@
+{% extends 'dashboard-layout.html' %}
+{% block title %} Contract #{{form.id}} {{form.name}} {% endblock %}
+{% block head %}
+<style>
+    /* Style the buttons that toggles the form categories */
+    .collapsible {
+      background-color: #007fd0;
+      color: white;
+      cursor: pointer;
+      /* padding: 18px; */
+      padding: 8px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      /* font-size: 15px; */
+      font-size: 12px;
+      margin: 1rem 0rem;
+      border-radius: 10px;
+    }
+
+    /* Style the form fields when the buttons are clicked */
+    .content2 {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+      margin: 1rem 2rem;
+    }
+  </style>
+ <style>
+  /* Style the button */
+  .animated-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  /* Add a hover animation to the button */
+  .animated-button:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+</style>
+{% endblock %}
+{% block heading %}Contract #{{form.id}} {{form.name}} 
+{% if entry.status =="pending" %}<button class="btn btn-sm btn-secondary ml-4">{{entry.status}}</button>{% elif entry.status=="completed" %}<button class="btn btn-sm btn-success ml-4">{{entry.status}}</button>{% endif %}
+{% endblock %}
+{% block heading2 %}Contract #{{form.id}} {{form.name}}{% endblock %}
+{% block content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container">
+    {% if entry %}
+    <form action="/save-form/{{form.id}}" method="post">
+      <button type="button" class="collapsible">SECTION 1 - COMPANY ONE</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF COMPANY</label>
+          <input type="text" name="NAME_OF_COMPANY_ONE" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" value="{{entry.data['NAME_OF_COMPANY_ONE']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TYPE OF COMPANY</label>
+          <input type="text" name="TYPE_OF_COMPANY_ONE" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" value="{{entry.data['TYPE_OF_COMPANY_ONE']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY’S REGISTRATION NUMBER</label>
+          <input type="text" name="COMPANY_ONE_REGISTRATION_NUMBER"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['COMPANY_ONE_REGISTRATION_NUMBER']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY NAME</label>
+          <input type="text" name="AUTHORITY_ONE_NAME" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" value="{{entry.data['AUTHORITY_ONE_NAME']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY OFFICE ADDRESS</label>
+          <input type="text" name="AUTHORITY_ONE_OFFICE_ADDRESS"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['AUTHORITY_ONE_OFFICE_ADDRESS']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TITLE OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="TITLE_OF_PERSON_REPRESENTING_THE_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['TITLE_OF_PERSON_REPRESENTING_THE_AUTHORITY_ONE']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="NAME_OF_PERSON_REPRESENTING_THE_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['NAME_OF_PERSON_REPRESENTING_THE_AUTHORITY_ONE']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COUNTRY_OF_NATIONALITY OF PERSON
+            REPRESENTING THE AUTHORITY</label>
+          <input type="text" name="COUNTRY_OF_NATIONALITY_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['COUNTRY_OF_NATIONALITY_AUTHORITY_ONE']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">PASSPORT NO OF INDIVIDUAL REPRESENTING
+            THE AUTHORITY</label>
+          <input type="text" name="PASSPORT_NO_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['PASSPORT_NO_AUTHORITY_ONE']}}" required>
+        </div>
+      </div>
+      <button type="button" class="collapsible">SECTION 2 - COMPANY TWO</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF COMPANY</label>
+          <input type="text" name="NAME_OF_COMPANY_TWO" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" value="{{entry.data['NAME_OF_COMPANY_TWO']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TYPE OF COMPANY</label>
+          <input type="text" name="TYPE_OF_COMPANY_TWO" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" value="{{entry.data['TYPE_OF_COMPANY_TWO']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY’S REGISTRATION NUMBER</label>
+          <input type="text" name="COMPANY_TWO_REGISTRATION_NUMBER"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['COMPANY_TWO_REGISTRATION_NUMBER']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY NAME</label>
+          <input type="text" name="AUTHORITY_TWO_NAME" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" value="{{entry.data['AUTHORITY_TWO_NAME']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY OFFICE ADDRESS</label>
+          <input type="text" name="AUTHORITY_TWO_OFFICE_ADDRESS"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['AUTHORITY_TWO_OFFICE_ADDRESS']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TITLE OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="TITLE_OF_PERSON_REPRESENTING_THE_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['TITLE_OF_PERSON_REPRESENTING_THE_AUTHORITY_TWO']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="NAME_OF_PERSON_REPRESENTING_THE_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['NAME_OF_PERSON_REPRESENTING_THE_AUTHORITY_TWO']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COUNTRY_OF_NATIONALITY OF PERSON
+            REPRESENTING THE AUTHORITY</label>
+          <input type="text" name="COUNTRY_OF_NATIONALITY_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['COUNTRY_OF_NATIONALITY_AUTHORITY_TWO']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">PASSPORT NO OF INDIVIDUAL REPRESENTING
+            THE AUTHORITY</label>
+          <input type="text" name="PASSPORT_NO_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['PASSPORT_NO_AUTHORITY_TWO']}}" required>
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">SECTION 3 - OBJECTIVES</button>
+      <div class="content2">
+        <!-- <form> -->
+        <div class="form-group">
+          <label for="exampleInputEmail1">DESCRIBE SERVICES / RESOURCES THAT
+            FIRST PARTY WILL BE PROVIDING TO THE SECOND PARTY</label>
+          <textarea rows="3" class="form-control"
+            name="SERVICES_FIRSTPARTY_TO_SECOND_PARTY" for="exampleInputEmail1">{{entry.data['SERVICES_FIRSTPARTY_TO_SECOND_PARTY']}}</textarea>
+          <div class="form-group">
+            <label for="exampleInputEmail1">DESCRIBE SERVICES / RESOURCES THAT
+              SECOND PARTY WILL BE PROVIDING TO THE FIRST PARTY</label>
+            <textarea rows="3" class="form-control"
+              name="SERVICES_SECOND_PARTY_TO_FIRSTPARTY"
+              for="exampleInputEmail1">{{entry.data['SERVICES_SECOND_PARTY_TO_FIRSTPARTY']}}
+            </textarea>
+          </div>
+          <!-- </form> -->
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">SECTION 4 - SIGNATURES</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY ONE NAME OF SIGNATORY</label>
+          <input type="text" name="COMPANY_ONE_NAME_OF_SIGNATORY"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['COMPANY_ONE_NAME_OF_SIGNATORY']}}" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY TWO NAME OF SIGNATORY</label>
+          <input type="text" name="COMPANY_TWO_NAME_OF_SIGNATORY"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" value="{{entry.data['COMPANY_TWO_NAME_OF_SIGNATORY']}}" required>
+        </div>
+      </div>
+      <!-- <button class="animated-button" type="submit">Save</button> -->
+      <div class="text-center">
+      <button class="btn btn btn-success" type="submit">Save</button>
+      </div>
+    </form>
+    {% else %}
+    <form action="/save-form/{{form.id}}" method="post">
+      <button type="button" class="collapsible">COMPANY ONE</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF COMPANY</label>
+          <input type="text" name="NAME_OF_COMPANY_ONE" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TYPE OF COMPANY</label>
+          <input type="text" name="TYPE_OF_COMPANY_ONE" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY’S REGISTRATION NUMBER</label>
+          <input type="text" name="COMPANY_ONE_REGISTRATION_NUMBER"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY NAME</label>
+          <input type="text" name="AUTHORITY_ONE_NAME" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY OFFICE ADDRESS</label>
+          <input type="text" name="AUTHORITY_ONE_OFFICE_ADDRESS"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TITLE OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="TITLE_OF_PERSON_REPRESENTING_THE_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="NAME_OF_PERSON_REPRESENTING_THE_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COUNTRY_OF_NATIONALITY OF PERSON
+            REPRESENTING THE AUTHORITY</label>
+          <input type="text" name="COUNTRY_OF_NATIONALITY_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">PASSPORT NO OF INDIVIDUAL REPRESENTING
+            THE AUTHORITY</label>
+          <input type="text" name="PASSPORT_NO_AUTHORITY_ONE"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+      <button type="button" class="collapsible">COMPANY TWO</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF COMPANY</label>
+          <input type="text" name="NAME_OF_COMPANY_TWO" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TYPE OF COMPANY</label>
+          <input type="text" name="TYPE_OF_COMPANY_TWO" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY’S REGISTRATION NUMBER</label>
+          <input type="text" name="COMPANY_TWO_REGISTRATION_NUMBER"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY NAME</label>
+          <input type="text" name="AUTHORITY_TWO_NAME" class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">AUTHORITY OFFICE ADDRESS</label>
+          <input type="text" name="AUTHORITY_TWO_OFFICE_ADDRESS"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">TITLE OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="TITLE_OF_PERSON_REPRESENTING_THE_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">NAME OF PERSON REPRESENTING THE
+            AUTHORITY</label>
+          <input type="text"
+            name="NAME_OF_PERSON_REPRESENTING_THE_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COUNTRY_OF_NATIONALITY OF PERSON
+            REPRESENTING THE AUTHORITY</label>
+          <input type="text" name="COUNTRY_OF_NATIONALITY_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">PASSPORT NO OF INDIVIDUAL REPRESENTING
+            THE AUTHORITY</label>
+          <input type="text" name="PASSPORT_NO_AUTHORITY_TWO"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">OBJECTIVES</button>
+      <div class="content2">
+        <!-- <form> -->
+        <div class="form-group">
+          <label for="exampleInputEmail1">DESCRIBE SERVICES / RESOURCES THAT
+            FIRST PARTY WILL BE PROVIDING TO THE SECOND PARTY</label>
+          <textarea rows="3" class="form-control"
+            name="SERVICES_FIRSTPARTY_TO_SECOND_PARTY" for="exampleInputEmail1"></textarea>
+          <div class="form-group">
+            <label for="exampleInputEmail1">DESCRIBE SERVICES / RESOURCES THAT
+              SECOND PARTY WILL BE PROVIDING TO THE FIRST PARTY</label>
+            <textarea rows="3" class="form-control"
+              name="SERVICES_SECOND_PARTY_TO_FIRSTPARTY"
+              for="exampleInputEmail1">
+            </textarea>
+          </div>
+          <!-- </form> -->
+        </div>
+      </div>
+
+      <button type="button" class="collapsible">SIGNATURES</button>
+      <div class="content2">
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY ONE NAME OF SIGNATORY</label>
+          <input type="text" name="COMPANY_ONE_NAME_OF_SIGNATORY"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">COMPANY TWO NAME OF SIGNATORY</label>
+          <input type="text" name="COMPANY_TWO_NAME_OF_SIGNATORY"
+            class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+        </div>
+      </div>
+      <!-- <button class="animated-button" type="submit">Save</button> -->
+      <div class="text-center">
+        <button class="btn btn btn-success" type="submit">Save</button>
+        </div>
+    </form>
+    {% endif %}
+
+  </div>
+</section>
+<!-- /.content -->
+{% endblock %}
+{% block scripts %}
+<script>
+    // JavaScript to toggle the form categories
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+  
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+{% endblock %}

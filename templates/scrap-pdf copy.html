@@ -1,0 +1,299 @@
+{% extends 'dashboard-layout.html' %} 
+{% block title %} Scrap PDF {% endblock %}
+{% block head %}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+  input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #555;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input[type="file"]:hover {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.file-input-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.file-input-wrapper input[type="file"],
+.file-input-wrapper input[type="file"]:focus,
+.file-input-wrapper input[type="file"]:hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 100%;
+  height: 100%;
+}
+
+.file-input-wrapper .file-input-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #337ab7;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.file-input-wrapper .file-input-button:hover {
+  background-color: #286090;
+}
+
+.file-input-wrapper .file-input-name {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+</style>>
+{% endblock %}
+{% block heading %}Scrap PDF{% endblock %}
+{% block heading2 %}Scrap PDF{% endblock %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">         
+
+
+<div class="container">
+  <h3>Upload files</h3>
+  <!-- HTML for the file input field -->
+  <input type="file" id="file-input"  multiple />
+
+  <!-- HTML for the progress bar -->
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <h3 class="mt-5">Uploaded Files</h3>
+  <table  id="user-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>FileID</th>
+        <th>Filename</th>
+        <th>Size</th>
+        <th>Date</th>
+        <!-- <th>Scrap</th> -->
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="file-list">
+      {% for i in data %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.filename}}</td>
+        <td>{{i.size}} Kb</td>
+        <td>{{i.date}}</td>
+        <!-- <td><a href="/scrap-file/{{i.id}}"><button class="btn-sm btn btn-outline-success">Scrap</button></a></td> -->
+        <td><a href="/remove-file/{{i.id}}"><button class="btn-sm btn btn-outline-danger">Delete</button></a></td>
+    </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+  <div class="text-center" id="process_files_btn_div">
+    <button id="process_files_btn" class="btn btn-lg btn-success">Process Files</button>
+  </div>
+</div>
+
+
+      </div>
+    </section>
+    <!-- /.content -->
+  {% endblock %}
+  {% block scripts %}  
+  <!-- JavaScript to handle the file input and upload process -->
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var fileInput = document.getElementById('file-input');
+        var progressBar = document.querySelector('.progress-bar');
+
+        fileInput.addEventListener('change', function() {
+          var files = fileInput.files;
+
+          // Create a new FormData object.
+          var formData = new FormData();
+
+          // Loop through all the selected files and add them to the formData object.
+          for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            // Add the file to the formData object.
+            formData.append('files[]', file, file.name);
+          }
+
+          // Set up the AJAX request.
+          var xhr = new XMLHttpRequest();
+
+          // Add progress event listener to the upload.
+          xhr.upload.addEventListener('progress', function(event) {
+            var percent = Math.round((event.loaded / event.total) * 100);
+
+            // Update the progress bar.
+            progressBar.style.width = percent + '%';
+            progressBar.setAttribute('aria-valuenow', percent);
+            progressBar.textContent = percent + '%';
+          });
+
+          xhr.onload = function() {
+          if (xhr.status == 200) {
+            // The request was successful.
+            var response = xhr.response;
+            
+            // The request was successful.
+            var users = JSON.parse(xhr.response);
+            console.log(users)
+
+            // Get the user table element.
+            var userTable = document.getElementById('user-table');
+
+            var filelist = document.getElementById('file-list').innerHTML = '';
+
+            // Iterate through the list of users.
+            users.forEach(user => {
+              console.log(user)
+              // Create a new table row element.
+              var tr = document.createElement('tr');
+
+              // Create the ID, name, and email cells.
+              var idTd = document.createElement('td');
+              var filenameTd = document.createElement('td');
+              var sizeTd = document.createElement('td');
+              var dateTd = document.createElement('td');
+              var scrapTd = document.createElement('td');
+              var delTd = document.createElement('td');
+
+              // Set the text content of the cells.
+              idTd.textContent = user['id'];
+              filenameTd.textContent = user['filename'];
+              sizeTd.textContent = user['size']+" kb";
+              dateTd.textContent = user['date'];
+              scrapTd.innerHTML = '<a><button class="btn-sm btn btn-outline-success">Scrap</button></a>';
+              delTd.innerHTML = '<a href="/remove-file/'+user['id']+'"><button class="btn-sm btn btn-outline-danger">Delete</button></a>';
+
+              // Append the cells to the row.
+              tr.appendChild(idTd);
+              tr.appendChild(filenameTd);
+              tr.appendChild(sizeTd);
+              tr.appendChild(dateTd);
+              tr.appendChild(scrapTd);
+              tr.appendChild(delTd);
+
+
+              // Append the row to the user table.
+              userTable.appendChild(tr);
+            })
+
+              
+          } else {
+            // The request was unsuccessful.
+            console.error('An error occurred: ' + xhr.status);
+          }
+        };
+
+          // Set up the request.
+          xhr.open('POST', '/scrap-pdf');
+
+          // Send the request.
+          xhr.send(formData);
+        });
+      });
+    </script>
+    <script>
+      var process_files_btn = document.getElementById("process_files_btn");
+      process_files_btn.addEventListener("click", process)
+
+      function process(){
+        // Swal.showLoading({
+        //   title: 'Submit your Github username',
+        //   allowOutsideClick:false
+        // })
+        
+        Swal.fire({
+          title: 'Processing, Please wait..',
+          onBeforeOpen: () => {
+            Swal.showLoading()
+          },
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          showConfirmButton: false
+        });
+        
+        // Set up the AJAX request.
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          if (xhr.status == 200) {
+            // The request was successful.
+            var response = xhr.response;
+            if (response=="completed"){
+              // Swal.hideLoading()
+              Swal.close();
+                Swal.fire(
+                  'Success',
+                  'Scrapping Completed!',
+                  'success'
+                )
+
+            }else if (response == "No data"){
+              Swal.close();
+              Swal.fire(
+                  'Oops',
+                  "No files Uploaded!",
+                  'error'
+                )
+            }
+          } else {
+            // The request was unsuccessful.
+            // Swal.hideLoading()
+            Swal.close();
+            // console.error('An error occurred: ' + xhr.status);
+            Swal.fire(
+                  'Oops',
+                  xhr.status,
+                  'error'
+                )
+          }
+        };
+
+
+        
+        // Set up the request.
+        xhr.open('POST', '/process-files');
+
+        // Send the request.
+        xhr.send();
+
+      }
+      
+    </script>
+  {% endblock %}
